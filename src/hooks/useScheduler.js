@@ -11,6 +11,7 @@ export function useScheduler() {
   const [root, setRoot] = useState(sched.root)
   const [direction, setDirection] = useState(1)
   const [stepIndex, setStepIndex] = useState(-1)
+  const [reversePending, setReversePending] = useState(false)
   const rafRef = useRef(0)
   const startedAt = useRef(0)
   const elapsedRef = useRef(0)
@@ -19,12 +20,17 @@ export function useScheduler() {
   useEffect(() => {
     if (!isPlaying) return
     const loop = () => {
+      // The note + syllable lag by output latency (what the singer hears now),
+      // so they come from the scheduled-event queue. Direction is "where we're
+      // heading", a live intent — read it straight off the scheduler so a tap
+      // on Reverse flips the arrow instantly and never reverts to a stale value.
       const v = sched.visualState()
       if (v) {
         setRoot(v.root)
-        setDirection(v.direction)
         setStepIndex(v.stepIndex)
       }
+      setDirection(sched.direction)
+      setReversePending(sched._manualPending)
       rafRef.current = requestAnimationFrame(loop)
     }
     rafRef.current = requestAnimationFrame(loop)
@@ -55,6 +61,7 @@ export function useScheduler() {
   const reverse = useCallback(() => {
     sched.reverse()
     setDirection(sched.direction) // instant visual feedback
+    setReversePending(sched._manualPending)
   }, [sched])
 
   const setTempo = useCallback((bpm) => sched.setTempo(bpm), [sched])
@@ -73,7 +80,7 @@ export function useScheduler() {
   const resetElapsed = useCallback(() => { elapsedRef.current = 0 }, [])
 
   return {
-    isPlaying, root, direction, stepIndex,
+    isPlaying, root, direction, stepIndex, reversePending,
     configure, play, stop, toggle, reverse, setTempo, setDrone,
     elapsedSeconds, resetElapsed,
   }

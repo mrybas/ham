@@ -158,6 +158,15 @@ button { font-family: inherit; cursor: pointer; border: none; color: inherit; }
 }
 .rs-reverse:active { transform: scale(0.985); }
 .rs-reverse.is-idle { opacity: 0.4; }
+.rs-reverse.is-armed {
+  background: var(--accent);
+  font-size: 22px;
+  animation: rs-pulse 0.9s ease-in-out infinite;
+}
+@keyframes rs-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.62; }
+}
 
 .rs-bottom { display: flex; gap: 12px; align-items: stretch; }
 .rs-tempo {

@@ -5,7 +5,7 @@
 import { midiToName } from '../model/midi.js'
 
 export default function RunningScreen({
-  warmup, root, direction, stepIndex, isPlaying,
+  warmup, root, direction, stepIndex, isPlaying, reversePending,
   tempo, onTempo, onToggle, onReverse, onBack,
 }) {
   const syl = warmup.syllables && warmup.syllables.length
@@ -26,11 +26,13 @@ export default function RunningScreen({
       </div>
 
       <button
-        className={`rs-reverse ${isPlaying ? '' : 'is-idle'}`}
+        className={`rs-reverse ${isPlaying ? '' : 'is-idle'} ${reversePending ? 'is-armed' : ''}`}
         onClick={onReverse}
         disabled={!isPlaying}
       >
-        ⇅ Reverse
+        {reversePending
+          ? <>↻ Turning {direction > 0 ? 'up' : 'down'} at next change…</>
+          : <>⇅ Reverse — now going {direction > 0 ? 'up' : 'down'}</>}
       </button>
 
       <div className="rs-bottom">

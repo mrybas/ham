@@ -2,6 +2,15 @@
 // Bump APP_VERSION (in App.jsx) together with adding an entry here.
 export const CHANGELOG = [
   {
+    version: '0.1.1',
+    date: '2026-06-17',
+    notes: [
+      'Reverse button now flips the direction arrow instantly and reliably (it no longer briefly snapped back to the old direction).',
+      'Reverse shows an "↻ turning at next change…" armed state so you can see the tap registered — the pitch turns around at the next key change, not mid-phrase.',
+      'Reverse label now spells out the current direction (going up / going down).',
+    ],
+  },
+  {
     version: '0.1.0',
     date: '2026-06-17',
     notes: [

@@ -6,7 +6,7 @@ import { loadSettings, saveSettings, clampTempo } from './model/settings.js'
 import { loadJournal, saveJournal, recordSession } from './model/journal.js'
 import { getWarmup } from './data/warmups.js'
 
-export const APP_VERSION = '0.1.0'
+export const APP_VERSION = '0.1.1'
 
 export default function App() {
   const [settings, setSettings] = useState(() => loadSettings())
@@ -57,6 +57,7 @@ export default function App() {
         direction={s.direction}
         stepIndex={s.stepIndex}
         isPlaying={s.isPlaying}
+        reversePending={s.reversePending}
         tempo={settings.tempoBpm}
         onTempo={setTempo}
         onToggle={s.toggle}
