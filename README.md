@@ -19,14 +19,14 @@ while standing and singing, phone on a stand, *without staring at the screen*.
 
 ```sh
 npm install
-npm run dev      # http://localhost:5173/ham/
+npm run dev      # http://localhost:5173/
 npm test         # unit tests
 npm run e2e      # end-to-end
 npm run build    # production build
 ```
 
-Hosted as a GitHub Pages project page: `https://mrybas.github.io/ham/`.
-A push of a `vX.Y.Z` tag triggers the deploy workflow.
+Hosted on GitHub Pages at `https://ham.beardlabs.cc` (custom domain via
+`public/CNAME`). A push of a `vX.Y.Z` tag triggers the deploy workflow.
 
 ## Status
 

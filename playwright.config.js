@@ -8,7 +8,7 @@ export default defineConfig({
   use: {
     // A dedicated strict port so we never collide with another Vite app (e.g.
     // shed.) on the default 5173 and end up testing the wrong site.
-    baseURL: 'http://localhost:5199/ham/',
+    baseURL: 'http://localhost:5199/',
     trace: 'on-first-retry',
   },
   projects: [
@@ -16,7 +16,7 @@ export default defineConfig({
   ],
   webServer: {
     command: 'npm run dev -- --port 5199 --strictPort',
-    url: 'http://localhost:5199/ham/',
+    url: 'http://localhost:5199/',
     reuseExistingServer: false,
     timeout: 60_000,
   },

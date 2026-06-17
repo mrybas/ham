@@ -1,8 +1,9 @@
 # ham. — guide for AI coding agents
 
 Vocal warm-up PWA: React + Vite, all sound synthesized via Web Audio. No
-backend — state lives in `localStorage`, hosted statically on GitHub Pages
-(project page at https://mrybas.github.io/ham/, so Vite `base` is `/ham/`).
+backend — state lives in `localStorage`, hosted statically on GitHub Pages at
+the custom domain https://ham.beardlabs.cc (see `public/CNAME`), so Vite `base`
+is `/`. Sibling subdomain to shed.beardlabs.cc — separate repo/Pages site.
 
 Core promise (brief §5): a **don't-look-at-it** app. Warm-ups transpose
 themselves up/down; the singer taps one big **Reverse** button. Build the
@@ -11,7 +12,7 @@ themselves up/down; the singer taps one big **Reverse** button. Build the
 ## Commands
 
 ```sh
-npm run dev      # dev server (Vite, http://localhost:5173/ham/)
+npm run dev      # dev server (Vite, http://localhost:5173/)
 npm test         # unit tests (Vitest, jsdom)
 npm run build    # production build + PWA service worker
 npm run e2e      # Playwright e2e (starts its own dev server)

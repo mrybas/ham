@@ -3,10 +3,10 @@ import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig(() => ({
-  // Served as a GitHub Pages PROJECT page: https://mrybas.github.io/ham/
-  // (the user page mrybas.github.io is taken by another app). Project pages
-  // live under a sub-path, so the base must be '/ham/'.
-  base: '/ham/',
+  // Served from the custom domain root https://ham.beardlabs.cc (see
+  // public/CNAME), a sibling subdomain to shed.beardlabs.cc — each is its own
+  // repo/Pages site. Served at the domain root, so the base is '/'.
+  base: '/',
   plugins: [
     react(),
     // Installable PWA + offline: precaches the build, auto-updates on deploy.
